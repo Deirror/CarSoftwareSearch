@@ -8,8 +8,12 @@
 </head>
 <body>
     <h1>Welcome to Car Software Search</h1>
+    <div>
+        <input type="text" id="nameInput" placeholder="Enter your name" />
+        <button onclick="fetchHello(document.getElementById('nameInput').value)">Fetch Greeting</button>
+    </div>
     <div id="result"></div>
-    <button onclick="fetchHello()">Fetch Hello</button>
+
     <script src="script.js"></script>
 </body>
 </html>
