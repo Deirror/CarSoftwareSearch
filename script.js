@@ -22,8 +22,9 @@ async function fetchHello() {
 
         // Parse the response as JSON
         const data = await response.json();
-        console.log("Data received:", data); // Log the parsed data
-
+        console.log("Data received:", data);
+        console.log("Message received:", data.message);// Log the parsed data
+        console.log("Type of Message", typeof data.message);
         // Display the message in the result div
         if (data && data.message) {
             document.getElementById('result').innerText = data.message; // Access the message field
