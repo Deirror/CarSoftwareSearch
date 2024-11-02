@@ -5,6 +5,8 @@ body {
     background-position: center; 
     font-family: Arial, sans-serif;
     text-align: center;
+    width: 600px;
+    height: 800px;
 }
 
 label {
