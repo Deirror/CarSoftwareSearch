@@ -29,6 +29,20 @@ function updateVersions() {
     }
 }
 
+function printDiffs() {
+    const brandSelect = document.getElementById("brandSelect");
+    const selectedVersion = document.getElementById("versionSelect").value;
+    const selectedBrand = brandSelect.value;
+
+    if (selectedBrand && selectedVersion) {
+        const car = carData.find(car => car.brand === selectedBrand);
+
+        if(car && car.softwareVersions.includes(selectedVersion)) {
+            document.getElementById("diff").innerText = data[selectedBrand].softwareVersions[selectedVersion].join(", ");
+        }
+    }
+}
+        
 // Find the version based on input and selected brand
 function findVersionFast() {
     const brandSelect = document.getElementById("brandSelect");
