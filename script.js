@@ -16,11 +16,12 @@ function updateVersions() {
 
     // Clear previous versions
     versionSelect.innerHTML = '<option value="">Software Versions</option>';
-
+    
     // Find the selected brand and populate versions
     const car = carData.find(car => car.brand === selectedBrand);
     if (car) {
-        car.softwareVersions.forEach(version => {
+         const versionKeys = Object.keys(car.softwareVersions);
+         versionKeys.forEach(version => {
             const option = document.createElement("option");
             option.value = version;
             option.textContent = version;
@@ -29,6 +30,19 @@ function updateVersions() {
     }
 }
 
+function printDiffs() {
+    const brandSelect = document.getElementById("brandSelect");
+    const selectedVersion = document.getElementById("versionSelect").value;
+    const selectedBrand = brandSelect.value;
+    if (selectedBrand && selectedVersion) {
+        const car = carData.find(car => car.brand === selectedBrand);
+        const versionKeys = Object.keys(car.softwareVersions);
+        if(car && versionKeys.includes(selectedVersion)) {
+            document.getElementById("diff").innerText = data[selectedBrand].softwareVersions[selectedVersion].join(", ");
+        }
+    }
+}
+        
 // Find the version based on input and selected brand
 function findVersionFast() {
     const brandSelect = document.getElementById("brandSelect");
@@ -42,14 +56,14 @@ function findVersionFast() {
     }
 
     const car = carData.find(car => car.brand === selectedBrand);
-
-    if (car && car.softwareVersions.includes(versionToFind)) {
+    const versionKeys = Object.keys(car.softwareVersions);
+    
+    if (car && versionKeys.includes(versionToFind)) {
         document.getElementById("result").innerText = "Found Successfully!";
     } else {
         document.getElementById("result").innerText = "Version Not Found!";
     }
 }
-
 const carData = [
 {
   brand: "Alfa Romeo",
