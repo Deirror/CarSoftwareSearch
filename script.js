@@ -17,8 +17,9 @@ const carData = [
 function findVersionFast() {
      const brandSelect = document.getElementById("brandSelect");
      const versionToFind = document.getElementById("findv");
+     const selectedBrand = brandSelect.value;
 
-    if(!brandSelect || !versionToFind) {
+    if(!selectedBrand || !versionToFind) {
         document.getElementById('result').innerText = "Brand or Version not found!";
         return;
     }
