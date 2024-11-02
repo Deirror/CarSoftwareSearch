@@ -25,7 +25,7 @@ function findVersionFast() {
         return;
     }
 
-    const car = carData.find(car => car.brand === brand);
+    const car = carData.find(car => car.brand === selectedBrand);
 
     if (car && car.softwareVersions.includes(version)) {
         document.getElementById("result").innerText = "Found Successfully!";
