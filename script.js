@@ -1,5 +1,4 @@
-// script.js
-
+// Data for car brands and versions
 const carData = [
     {
         brand: "Toyota",
@@ -15,24 +14,38 @@ const carData = [
     }
 ];
 
-// Function to display car brands and software versions
-function displayCarData() {
-    const container = document.getElementById("carDataContainer");
-
+// Function to populate the brand dropdown
+function populateBrandDropdown() {
+    const brandSelect = document.getElementById("brandSelect");
     carData.forEach(car => {
-        const brandHeader = document.createElement("h3");
-        brandHeader.textContent = car.brand;
-        container.appendChild(brandHeader);
-
-        const versionList = document.createElement("ul");
-        car.softwareVersions.forEach(version => {
-            const versionItem = document.createElement("li");
-            versionItem.textContent = version;
-            versionList.appendChild(versionItem);
-        });
-        container.appendChild(versionList);
+        const option = document.createElement("option");
+        option.value = car.brand;
+        option.textContent = car.brand;
+        brandSelect.appendChild(option);
     });
 }
 
-// Call the function when the page loads
-document.addEventListener("DOMContentLoaded", displayCarData);
+// Function to update the version dropdown based on the selected brand
+function updateVersions() {
+    const brandSelect = document.getElementById("brandSelect");
+    const versionSelect = document.getElementById("versionSelect");
+    const selectedBrand = brandSelect.value;
+
+    // Clear the version dropdown
+    versionSelect.innerHTML = '<option value="">--Select a Version--</option>';
+
+    // Find the selected brand's data
+    const car = carData.find(car => car.brand === selectedBrand);
+    if (car) {
+        // Populate version dropdown with the selected brand's software versions
+        car.softwareVersions.forEach(version => {
+            const option = document.createElement("option");
+            option.value = version;
+            option.textContent = version;
+            versionSelect.appendChild(option);
+        });
+    }
+}
+
+// Initialize the brand dropdown on page load
+document.addEventListener("DOMContentLoaded", populateBrandDropdown);
