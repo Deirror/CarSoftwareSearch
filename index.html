@@ -24,6 +24,7 @@
     <input type="button" value="Find" onclick="findVersionFast()">    
     <p id="result"></p>
     <script> 
+        import carData from './carData.js';
         // Populate brand dropdown on page load
 window.onload = function() {
     const brandSelect = document.getElementById("brandSelect");
@@ -77,6 +78,5 @@ function findVersionFast() {
     }
 }
     </script>
-    <script type="module" src="script.js"></script>
 </body>
 </html>
