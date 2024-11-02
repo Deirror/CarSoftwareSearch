@@ -10,14 +10,18 @@
     <h1>Welcome to Car Software Search</h1>
 
     <label for="brandSelect">Select Car Brand:</label>
-    <select id="brandSelect" onchange="updateVersions()">
+    <select id="brandSelect">
         <option value="">--Select a Brand--</option>
     </select>
 
     <label for="versionSelect">Select Software Version:</label>
     <select id="versionSelect">
-        <option value="">--Select a Version--</option>
+        <option value="">All Version</option>
     </select>
+
+    <label for="findv">Find Version Fast</label>
+    <input type="text" id="findv" name="findv"><br><br>
+    <input type="button" value="Find" onclick="findVersionFast()">
 
     <script src="script.js"></script>
 </body>
