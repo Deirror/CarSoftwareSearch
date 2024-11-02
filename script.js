@@ -19,11 +19,17 @@ function findVersionFast() {
      const versionToFind = document.getElementById("findv");
 
     if(!brandSelect || !versionToFind) {
-        console.error("Brand or Version not found!");
+        document.getElementById('result').innerText = "Brand or Version not found!";
         return;
     }
 
-    
+    const car = carData.find(car => car.brand === brand);
+
+    if (car && car.softwareVersions.includes(version)) {
+        document.getElementById("result").innerText = "Found Successfully!";
+    } else {
+        document.getElementById("result").innerText = "Not Found!";
+    }
 }
 
 // Function to populate the brand dropdown
