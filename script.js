@@ -1,39 +1,38 @@
-async function fetchHello() {
-    const name = document.getElementById('nameInput').value;
-    console.log("Name entered:", name); // Log the name
+// script.js
 
-    if (!name) {
-        document.getElementById('result').innerText = 'Please enter a name.';
-        return;
+const carData = [
+    {
+        brand: "Toyota",
+        softwareVersions: ["v1.0.0", "v1.1.0", "v1.2.0"]
+    },
+    {
+        brand: "Ford",
+        softwareVersions: ["v2.0.0", "v2.1.0"]
+    },
+    {
+        brand: "BMW",
+        softwareVersions: ["v3.0.0", "v3.1.1", "v3.2.2"]
     }
+];
 
-    try {
-        // Make the API request
-        const response = await fetch(`https://staging-carsoft-srch-b962.encr.app/hello/${name}`);
-        console.log("Response:", response); // Log the response object
+// Function to display car brands and software versions
+function displayCarData() {
+    const container = document.getElementById("carDataContainer");
 
-        // Check if the response is OK
-        if (!response.ok) {
-            const errorData = await response.json();
-            document.getElementById('result').innerText = `Error: ${errorData.message}`;
-            console.error("Error data:", errorData); // Log the error data
-            return;
-        }
+    carData.forEach(car => {
+        const brandHeader = document.createElement("h3");
+        brandHeader.textContent = car.brand;
+        container.appendChild(brandHeader);
 
-        // Parse the response as JSON
-        const data = await response.json();
-        console.log("Data received:", data);
-        console.log("Message received:", data.message);// Log the parsed data
-        console.log("Type of Message", typeof data.message);
-        // Display the message in the result div
-        if (data && data.message) {
-            document.getElementById('result').innerText = data.message; // Access the message field
-        } else {
-            document.getElementById('result').innerText = 'Response format is incorrect.';
-            console.error("Unexpected response format:", data);
-        }
-    } catch (error) {
-        document.getElementById('result').innerText = 'Network error occurred.';
-        console.error("Network error:", error);
-    }
+        const versionList = document.createElement("ul");
+        car.softwareVersions.forEach(version => {
+            const versionItem = document.createElement("li");
+            versionItem.textContent = version;
+            versionList.appendChild(versionItem);
+        });
+        container.appendChild(versionList);
+    });
 }
+
+// Call the function when the page loads
+document.addEventListener("DOMContentLoaded", displayCarData);
