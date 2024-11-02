@@ -8,13 +8,17 @@
 </head>
 <body>
     <h1>Welcome to Car Software Search</h1>
-    <input type="text" id="nameInput" placeholder="Enter your name" />
-    <button onclick="fetchHello()">Fetch Greeting</button>
-    <div id="result"></div>
 
-    <div id="carDataContainer"></div>
+    <label for="brandSelect">Select Car Brand:</label>
+    <select id="brandSelect" onchange="updateVersions()">
+        <option value="">--Select a Brand--</option>
+    </select>
 
-    <script src="script.js">
-    </script>
+    <label for="versionSelect">Select Software Version:</label>
+    <select id="versionSelect">
+        <option value="">--Select a Version--</option>
+    </select>
+
+    <script src="script.js"></script>
 </body>
 </html>
