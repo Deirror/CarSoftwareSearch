@@ -1,12 +1,9 @@
 body {
-    background-image: url('MyProgram.png'); /* Replace with your image path */
     background-size: cover; 
     background-repeat: no-repeat; 
     background-position: center; 
     font-family: Arial, sans-serif;
     text-align: center;
-    width: 600px;
-    height: 800px;
 }
 
 label {
