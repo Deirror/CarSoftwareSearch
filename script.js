@@ -37,9 +37,13 @@ function printDiffs() {
     if (selectedBrand && selectedVersion) {
         const car = carData.find(car => car.brand === selectedBrand);
         const versionKeys = Object.keys(car.softwareVersions);
-        if(car && versionKeys.includes(selectedVersion)) {
-            document.getElementById("diff").innerText = carData[selectedBrand].softwareVersions[selectedVersion].join(", ");
+      const brandData = carData.find(car => car.brand === selectedBrand);
+        if (brandData && brandData.softwareVersions[selectedVersion]) {
+            document.getElementById("diff").innerText = brandData.softwareVersions[selectedVersion].join(", ");
+        } else {
+    console.error("Selected brand or version not found.");
         }
+
     }
 }
         
