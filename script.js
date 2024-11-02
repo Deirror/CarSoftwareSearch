@@ -14,9 +14,20 @@ const carData = [
     }
 ];
 
+function findVersionFast() {
+     const brandSelect = document.getElementById("brandSelect");
+     const versionToFind = document.getElementById("findv");
+
+    if(!brandSelect || !versionToFind) {
+        console.error("Brand or Version not found!");
+        return;
+    }
+
+    
+}
+
 // Function to populate the brand dropdown
 function populateBrandDropdown() {
-    console.log("Populating brand dropdown..."); // Debugging line
     const brandSelect = document.getElementById("brandSelect");
 
     // Check if brandSelect is found
@@ -31,7 +42,6 @@ function populateBrandDropdown() {
         option.textContent = car.brand;
         brandSelect.appendChild(option);
     });
-    console.log("Brand dropdown populated successfully."); // Debugging line
 }
 
 // Function to update the version dropdown based on the selected brand
@@ -39,11 +49,8 @@ function updateVersions() {
     const brandSelect = document.getElementById("brandSelect");
     const versionSelect = document.getElementById("versionSelect");
     const selectedBrand = brandSelect.value;
-
-    console.log("Selected brand:", selectedBrand); // Debugging line
-
-    // Clear the version dropdown
-    versionSelect.innerHTML = '<option value="">--Select a Version--</option>';
+    
+    versionSelect.innerHTML =  '<option value="">Software Versions</option>';
 
     // Find the selected brand's data
     const car = carData.find(car => car.brand === selectedBrand);
@@ -55,7 +62,6 @@ function updateVersions() {
             option.textContent = version;
             versionSelect.appendChild(option);
         });
-        console.log("Version dropdown updated for", selectedBrand); // Debugging line
     } else {
         console.warn("No versions found for the selected brand"); // Debugging line
     }
