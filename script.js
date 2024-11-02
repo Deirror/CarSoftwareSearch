@@ -21,6 +21,7 @@ function findVersionFast() {
 
     if(!selectedBrand || !versionToFind) {
         document.getElementById('result').innerText = "Brand or Version not found!";
+          console.error("Nothing is selected!");
         return;
     }
 
@@ -28,8 +29,10 @@ function findVersionFast() {
 
     if (car && car.softwareVersions.includes(version)) {
         document.getElementById("result").innerText = "Found Successfully!";
+        console.error("YESSS is selected!");
     } else {
         document.getElementById("result").innerText = "Not Found!";
+        console.error("WOw is selected!");
     }
 }
 
