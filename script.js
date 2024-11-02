@@ -16,8 +16,8 @@ const carData = [
 
 function findVersionFast() {
      const brandSelect = document.getElementById("brandSelect");
-     const versionToFind = document.getElementById("findv");
-     const selectedBrand = brandSelect.value;
+     const versionToFind = document.getElementById("findv").value;
+         const selectedBrand = brandSelect.value;
 
     if(!selectedBrand || !versionToFind) {
         document.getElementById('result').innerText = "Brand or Version not found!";
@@ -27,7 +27,7 @@ function findVersionFast() {
 
     const car = carData.find(car => car.brand === selectedBrand);
 
-    if (car && car.softwareVersions.includes(version)) {
+    if (car && car.softwareVersions.includes(versionToFind)) {
         document.getElementById("result").innerText = "Found Successfully!";
         console.error("YESSS is selected!");
     } else {
