@@ -16,13 +16,22 @@ const carData = [
 
 // Function to populate the brand dropdown
 function populateBrandDropdown() {
+    console.log("Populating brand dropdown..."); // Debugging line
     const brandSelect = document.getElementById("brandSelect");
+
+    // Check if brandSelect is found
+    if (!brandSelect) {
+        console.error("Brand select element not found!");
+        return;
+    }
+
     carData.forEach(car => {
         const option = document.createElement("option");
         option.value = car.brand;
         option.textContent = car.brand;
         brandSelect.appendChild(option);
     });
+    console.log("Brand dropdown populated successfully."); // Debugging line
 }
 
 // Function to update the version dropdown based on the selected brand
@@ -30,6 +39,8 @@ function updateVersions() {
     const brandSelect = document.getElementById("brandSelect");
     const versionSelect = document.getElementById("versionSelect");
     const selectedBrand = brandSelect.value;
+
+    console.log("Selected brand:", selectedBrand); // Debugging line
 
     // Clear the version dropdown
     versionSelect.innerHTML = '<option value="">--Select a Version--</option>';
@@ -44,6 +55,9 @@ function updateVersions() {
             option.textContent = version;
             versionSelect.appendChild(option);
         });
+        console.log("Version dropdown updated for", selectedBrand); // Debugging line
+    } else {
+        console.warn("No versions found for the selected brand"); // Debugging line
     }
 }
 
